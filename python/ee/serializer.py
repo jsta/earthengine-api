@@ -167,7 +167,7 @@ class Serializer:
 
     if self._is_compound:
       # Save the new object and return a ValueRef.
-      hashval = hashlib.md5(json.dumps(result).encode()).digest()
+      hashval = hashlib.md5(json.dumps(result).encode(), usedforsecurity=False).digest()
       self._hashcache[obj_id] = hashval
       name = self._encoded.get(hashval, None)
       if not name:
@@ -263,7 +263,7 @@ class Serializer:
 
     if self._is_compound:
       # Save the new object and return a ValueRef.
-      hashval = hashlib.md5(json.dumps(result).encode()).digest()
+      hashval = hashlib.md5(json.dumps(result).encode(), usedforsecurity=False).digest()
       self._hashcache[obj_id] = hashval
       name = self._encoded.get(hashval, None)
       if not name:
